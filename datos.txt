@@ -1,0 +1,65 @@
+SELECT * FROM aescolar a;
+
+SELECT * FROM filtropago f;
+
+SELECT * FROM pagocronogramado p;
+
+delete from aescolar where ida=2;
+
+
+-- Matricula
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux1,'Pago de Matrícula',concat(auxae,'/01/01'),concat(auxae,'/03/01'),auxfil,aux);
+
+-- Mensualidades
+
+-- Marzo
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Marzo',concat(auxae,'/03/01'),concat(auxae,'/03/31'),auxfil,aux);
+
+-- Abril
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Abril',concat(auxae,'/04/01'),concat(auxae,'/04/30'),auxfil,aux);
+
+-- Mayo
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Mayo',concat(auxae,'/05/01'),concat(auxae,'/05/31'),auxfil,aux);
+
+-- Junio
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Junio',concat(auxae,'/06/01'),concat(auxae,'/06/30'),auxfil,aux);
+
+-- Julio
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Julio',concat(auxae,'/07/01'),concat(auxae,'/07/31'),auxfil,aux);
+
+-- Agosto
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Agosto',concat(auxae,'/08/01'),concat(auxae,'/08/31'),auxfil,aux);
+
+-- Setiembre
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Setiembre',concat(auxae,'/09/01'),concat(auxae,'/09/30'),auxfil,aux);
+
+-- Octubre
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Octubre',concat(auxae,'/10/01'),concat(auxae,'/10/31'),auxfil,aux);
+
+-- Noviembre
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Noviembre',concat(auxae,'/11/01'),concat(auxae,'/11/30'),auxfil,aux);
+
+-- Diciembre
+insert into filtropago values (null);
+select idfiltropago into auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,aux2,'Pago del Mes de Diciembre',concat(auxae,'/12/01'),concat(auxae,'/12/15'),auxfil,aux);

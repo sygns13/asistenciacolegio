@@ -1,0 +1,140 @@
+-- -----------------------------------------------------
+-- Table `cristoreyasistencia`.`FiltroPago`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `FiltroPago` (
+  `idFiltroPago` INT NOT NULL AUTO_INCREMENT ,
+  PRIMARY KEY (`idFiltroPago`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cristoreyasistencia`.`PagoGeneral`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `PagoGeneral` (
+  `idPagoGen` INT NOT NULL AUTO_INCREMENT ,
+  `monto` DECIMAL(12,2) NULL ,
+  `descripcion` VARCHAR(200) NULL ,
+  `idFiltroPago` INT NOT NULL ,
+  PRIMARY KEY (`idPagoGen`) ,
+  INDEX `fk_PagoGeneral_FiltroPago1_idx` (`idFiltroPago` ASC) ,
+  CONSTRAINT `fk_PagoGeneral_FiltroPago1`
+    FOREIGN KEY (`idFiltroPago` )
+    REFERENCES `cristoreyasistencia`.`FiltroPago` (`idFiltroPago` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cristoreyasistencia`.`PagoCronogramado`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `PagoCronogramado` (
+  `idPagoCrono` INT NOT NULL AUTO_INCREMENT ,
+  `monto` DECIMAL(12,2) NULL ,
+  `descripcion` VARCHAR(200) NULL ,
+  `fechaini` DATE NULL ,
+  `fechafin` DATE NULL ,
+  `idFiltroPago` INT NOT NULL ,
+  `idA` INT(11) NOT NULL ,
+  PRIMARY KEY (`idPagoCrono`) ,
+  INDEX `fk_PagoCronogramado_FiltroPago1_idx` (`idFiltroPago` ASC) ,
+  INDEX `fk_PagoCronogramado_aescolar1_idx` (`idA` ASC) ,
+  CONSTRAINT `fk_PagoCronogramado_FiltroPago1`
+    FOREIGN KEY (`idFiltroPago` )
+    REFERENCES `cristoreyasistencia`.`FiltroPago` (`idFiltroPago` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PagoCronogramado_aescolar1`
+    FOREIGN KEY (`idA` )
+    REFERENCES `cristoreyasistencia`.`aescolar` (`idA` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+
+-- -----------------------------------------------------
+-- Table `cristoreyasistencia`.`Descuento`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `cristoreyasistencia`.`Descuento` (
+  `idDes` INT NOT NULL AUTO_INCREMENT ,
+  `descripcion` VARCHAR(200) NULL ,
+  `monto` DECIMAL(12,2) NULL ,
+  `tipo` INT NULL ,
+	 `estado` VARCHAR(45) NULL ,
+  PRIMARY KEY (`idDes`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cristoreyasistencia`.`Recargo`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `cristoreyasistencia`.`Recargo` (
+  `idRec` INT NOT NULL AUTO_INCREMENT ,
+  `descripcion` VARCHAR(200) NULL ,
+  `monto` DECIMAL(12,2) NULL ,
+  `tipo` INT NULL ,
+ `estado` VARCHAR(45) NULL ,
+  PRIMARY KEY (`idRec`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cristoreyasistencia`.`PagoRealizado`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `cristoreyasistencia`.`PagoRealizado` (
+  `idPago` INT NOT NULL AUTO_INCREMENT ,
+  `pago` DECIMAL(12,2) NULL ,
+  `fecha` DATE NULL ,
+  `numboleta` VARCHAR(45) NULL ,
+  `idFiltroPago` INT NOT NULL ,
+  `idpersona` INT(11) NOT NULL ,
+  `idDes` INT NOT NULL ,
+  `idRec` INT NOT NULL ,
+  `idUsuario` INT(11) NOT NULL ,
+  PRIMARY KEY (`idPago`) ,
+  INDEX `fk_PagoRealizado_FiltroPago1_idx` (`idFiltroPago` ASC) ,
+  INDEX `fk_PagoRealizado_persona1_idx` (`idpersona` ASC) ,
+  INDEX `fk_PagoRealizado_Descuento1_idx` (`idDes` ASC) ,
+  INDEX `fk_PagoRealizado_Recargo1_idx` (`idRec` ASC) ,
+  INDEX `fk_PagoRealizado_usuario1_idx` (`idUsuario` ASC) ,
+  CONSTRAINT `fk_PagoRealizado_FiltroPago1`
+    FOREIGN KEY (`idFiltroPago` )
+    REFERENCES `cristoreyasistencia`.`FiltroPago` (`idFiltroPago` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PagoRealizado_persona1`
+    FOREIGN KEY (`idpersona` )
+    REFERENCES `cristoreyasistencia`.`persona` (`idpersona` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PagoRealizado_Descuento1`
+    FOREIGN KEY (`idDes` )
+    REFERENCES `cristoreyasistencia`.`Descuento` (`idDes` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PagoRealizado_Recargo1`
+    FOREIGN KEY (`idRec` )
+    REFERENCES `cristoreyasistencia`.`Recargo` (`idRec` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PagoRealizado_usuario1`
+    FOREIGN KEY (`idUsuario` )
+    REFERENCES `cristoreyasistencia`.`usuario` (`idUsuario` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `cristoreyasistencia`.`ConfigPago`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `ConfigPago` (
+  `idConfig` INT NOT NULL AUTO_INCREMENT ,
+  `matricula` DECIMAL(12,2) NULL ,
+  `mensualidad` DECIMAL(12,2) NULL ,
+  `fecini` DATE NULL ,
+  `fecfin` DATE NULL ,
+  `estado` VARCHAR(45) NULL ,
+  PRIMARY KEY (`idConfig`) )
+ENGINE = InnoDB;

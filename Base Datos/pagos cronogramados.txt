@@ -1,0 +1,57 @@
+set @auxfil ='';
+-- Matricula
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,300,'Pago de Matrícula',concat('2016','/01/01'),concat('2016','/03/01'),@auxfil,'2');
+
+-- Mensualidades
+
+-- Marzo
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Marzo',concat('2016','/03/01'),concat('2016','/03/31'),@auxfil,'2');
+
+-- Abril
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Abril',concat('2016','/04/01'),concat('2016','/04/30'),@auxfil,'2');
+
+-- Mayo
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Mayo',concat('2016','/05/01'),concat('2016','/05/31'),@auxfil,'2');
+
+-- Junio
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Junio',concat('2016','/06/01'),concat('2016','/06/30'),@auxfil,'2');
+
+-- Julio
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Julio',concat('2016','/07/01'),concat('2016','/07/31'),@auxfil,'2');
+
+-- Agosto
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Agosto',concat('2016','/08/01'),concat('2016','/08/31'),@auxfil,'2');
+
+-- Setiembre
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Setiembre',concat('2016','/09/01'),concat('2016','/09/30'),@auxfil,'2');
+
+-- Octubre
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Octubre',concat('2016','/10/01'),concat('2016','/10/31'),@auxfil,'2');
+
+-- Noviembre
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Noviembre',concat('2016','/11/01'),concat('2016','/11/30'),@auxfil,'2');
+
+-- Diciembre
+insert into filtropago values (null);
+select idfiltropago into @auxfil from filtropago ORDER BY idfiltropago DESC LIMIT 1;
+insert into pagocronogramado values(null,180,'Pago del Mes de Diciembre',concat('2016','/12/01'),concat('2016','/12/15'),@auxfil,'2');

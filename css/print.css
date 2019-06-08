@@ -1,0 +1,30 @@
+body{
+    background: transparent !important;
+    margin: 0
+}
+.line,div, table tr td{
+    background: transparent !important;
+    border: none !important;
+}
+.no-print, b{
+    color:transparent !important;
+}
+.hidden{
+    display: none !important;
+}
+.print-area{
+    height: 28cm;
+    max-height: 28cm;
+}
+
+.no-visible{
+    display: none !important;
+}
+
+.no-border-print{
+    border: none !important;
+    border-radius: 0px;
+    background: red;
+}
+
+
